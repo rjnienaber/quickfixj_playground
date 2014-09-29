@@ -1,18 +1,16 @@
+require 'bundler/setup'
+Bundler.require(:default)
+
 require_relative '../common/quickfix_application'
-
-class GatewayApplication < BaseApplication
-  def toApp(message, sessionId)
-    puts "CALLED (toApp - #{sessionId}): #{message.inspect}"
-  end
-
-  def fromApp(message, sessionId)
-    puts "CALLED (fromApp - #{sessionId}): #{message.inspect}"
-  end
-end
+require_relative 'queue_processor'
 
 class Gateway < QuickfixApplication
-  def application
-    GatewayApplication.new
+  attr_accessor :queue_processor
+
+  def fromApp(message, session_id) 
+    queue_processor.publish(message.to_s)
+  rescue Exception => e
+    puts "#{e}: #{e.backtrace.join("\n")}"
   end
 
   def process
@@ -25,8 +23,12 @@ class Gateway < QuickfixApplication
     if i < 10
       puts "We logged on! Sleeping..." 
       sleep
+    else
+      puts "We couldn't logon"
     end
   end
 end
 
-Gateway.new.start
+gateway = Gateway.new
+gateway.queue_processor = QueueProcessor.new
+gateway.start

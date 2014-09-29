@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing ERB</title>
+  </head>
+  <body>
+    <p>Last raw FIX message</p>
+    <table>
+      <thread>
+        <tr>
+          <td>Currency</td>
+          <td>Bid</td>
+          <td>Offer</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% prices.each do |currency, bid_offer| %>
+        <tr>
+          <td><%= currency %></td>
+          <td><%= bid_offer[0] %></td>
+          <td><%= bid_offer[1] %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>

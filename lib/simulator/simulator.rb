@@ -1,18 +1,21 @@
 require_relative '../common/quickfix_application'
-
-class SimulatorApplication < BaseApplication
-  def toApp(message, sessionId)
-    puts "CALLED (toApp - #{sessionId}): #{message.inspect}"
-  end
-
-  def fromApp(message, sessionId)
-    puts "CALLED (fromApp - #{sessionId}): #{message.inspect}"
-  end
-end
+require_relative 'simulator_thread'
 
 class Simulator < QuickfixApplication
-  def application
-    SimulatorApplication.new
+  attr_reader :threads, :ending
+
+  def initialize
+    super
+    @threads = {}
+    @ending = false
+  end
+
+  def onLogout(session_id)
+    threads[session_id].stop
+  end
+
+  def onLogon(session_id)
+    threads[session_id] = SimulatorThread.new(session_id).start
   end
 
   def process
@@ -21,4 +24,5 @@ class Simulator < QuickfixApplication
   end
 end
 
-Simulator.new.start
+simulator = Simulator.new
+simulator.start

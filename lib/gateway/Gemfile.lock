@@ -1,0 +1,10 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    march_hare (2.5.1-java)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  march_hare (~> 2.5.1)
