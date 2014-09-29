@@ -1,0 +1,25 @@
+quickfix c
+  for compile errors:
+    error: ‘STR2CSTR’ was not declared in this scope
+      sed -i -e 's/STR2CSTR/StringValuePtr/' *.cxx
+      same for RSTRING(<var>)->ptr
+
+  embus replacements
+    http://en.wikipedia.org/wiki/Apache_Synapse
+
+Documentation
+  http://www.quickfixj.org/quickfixj/usermanual/1.5.3/usage/sending_messages.html
+  http://www.fixtradingcommunity.org/FIXimate/FIXimate3.0/
+  http://www.quickfixj.org/jira/secure/attachment/10032/Message.java
+  http://www.quickfixj.org/confluence/display/qfj/User+FAQ
+    setup username/password
+  http://www.quickfixj.org/confluence/display/qfj/Home
+
+Helper Applications
+  http://www.quickfixengine.org/quickfix/doc/html/examples.html
+  http://fixpusher.sourceforge.net/
+
+
+Other
+  wget --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows --domains quickfixj.org --no-parent http://www.quickfixj.org/quickfixj/javadoc/1.5.3/index.html
+

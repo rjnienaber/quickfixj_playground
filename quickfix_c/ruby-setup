@@ -1,0 +1,247 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="Setup Ruby With Quickfix" about="/documents/ruby-setup" property="dc:title" />
+<link rel="shortcut icon" href="http://marketcetera.org/sites/default/files/favicon_0.png" type="image/png" />
+<link rel="up" href="/documents/marketcetera-developer-network-2.2" />
+<link rel="shortlink" href="/node/906" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/documents/ruby-setup" />
+<link rel="prev" href="/documents/seda-developer" />
+  <title>Setup Ruby With Quickfix | www.marketcetera.com</title>
+  <style type="text/css" media="all">@import url("http://marketcetera.org/modules/system/system.base.css?mm2awf");
+@import url("http://marketcetera.org/modules/system/system.menus.css?mm2awf");
+@import url("http://marketcetera.org/modules/system/system.messages.css?mm2awf");
+@import url("http://marketcetera.org/modules/system/system.theme.css?mm2awf");</style>
+<style type="text/css" media="all">@import url("http://marketcetera.org/modules/book/book.css?mm2awf");
+@import url("http://marketcetera.org/modules/comment/comment.css?mm2awf");
+@import url("http://marketcetera.org/sites/all/modules/domain/domain_nav/domain_nav.css?mm2awf");
+@import url("http://marketcetera.org/modules/field/theme/field.css?mm2awf");
+@import url("http://marketcetera.org/modules/node/node.css?mm2awf");
+@import url("http://marketcetera.org/modules/search/search.css?mm2awf");
+@import url("http://marketcetera.org/modules/user/user.css?mm2awf");
+@import url("http://marketcetera.org/modules/forum/forum.css?mm2awf");
+@import url("http://marketcetera.org/sites/all/modules/views/css/views.css?mm2awf");</style>
+<style type="text/css" media="all">@import url("http://marketcetera.org/sites/all/modules/ctools/css/ctools.css?mm2awf");
+@import url("http://marketcetera.org/sites/all/modules/uif/uif.css?mm2awf");</style>
+<style type="text/css" media="all">@import url("http://marketcetera.org/sites/all/themes/danland/style.css?mm2awf");</style>
+
+<!--[if IE 6]>
+<link type="text/css" rel="stylesheet" href="http://marketcetera.org/sites/all/themes/danland/style.ie6.css?mm2awf" media="all" />
+<![endif]-->
+  <script type="text/javascript" src="http://marketcetera.org/misc/jquery.js?v=1.4.4"></script>
+<script type="text/javascript" src="http://marketcetera.org/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="http://marketcetera.org/misc/drupal.js?mm2awf"></script>
+<script type="text/javascript" src="http://marketcetera.org/sites/all/themes/danland/scripts/hoverIntent.js?mm2awf"></script>
+<script type="text/javascript" src="http://marketcetera.org/sites/all/themes/danland/scripts/superfish.js?mm2awf"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"danland","theme_token":"YkhHTUViOrWvLejeAS6z43378KzYaLBifWDaZQty1o8","js":{"misc\/jquery.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/themes\/danland\/scripts\/hoverIntent.js":1,"sites\/all\/themes\/danland\/scripts\/superfish.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/domain\/domain_nav\/domain_nav.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"modules\/forum\/forum.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/uif\/uif.css":1,"sites\/all\/themes\/danland\/style.css":1,"sites\/all\/themes\/danland\/style.ie6.css":1}}});
+//--><!]]>
+</script>
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-906 node-type-book domain-marketcetera-com-local" >
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div >
+<div id="header">
+<div id="header-wrapper">
+	 
+		<div id="logo-wrapper">
+			<div class="logo">
+				<a href="/" title="Home"><img src="http://marketcetera.org/sites/default/files/marketcetera_logo.png" alt="Home" /></a>
+			</div>
+		</div><!-- end logo wrapper -->
+			
+			<div id="search-box">
+			  <div class="region region-search-box">
+    <div id="block-search-form" class="block block-search">
+
+
+<div class="content">
+  <form action="/documents/ruby-setup" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-JXZMrmq1Gm5n68eY3a4iBaQotoeU_Zy-LFcpZTl6Vrw" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form></div> <!-- end block content -->
+</div> <!-- end block -->
+  </div>
+		</div><!-- /search-box -->
+	
+	
+			<div id="authorize">
+      		      <ul><li class="first"><a href="/user">Login</a></li><li><a href="/user/register">Register</a></li></ul>
+		</div>
+	
+      </div><!-- end header-wrapper -->
+</div> <!-- /header -->
+<div style="clear:both"></div>
+
+<div id="menu">
+<div id="rounded-menu-left"></div>
+       <div id="superfish">
+          <div class="region region-superfish-menu">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+
+  <h2 class="block-title">Site navigation</h2>
+
+<div class="content">
+  <ul class="menu"><li class="first leaf"><a href="/">Home</a></li>
+<li class="expanded"><a href="/node/802">Architecture</a><ul class="menu"><li class="first last leaf"><a href="/node/803" title="">Connectivity Plug-ins</a></li>
+</ul></li>
+<li class="expanded"><a href="/node/810">Buy</a><ul class="menu"><li class="first leaf"><a href="/node/811" title="">Evaluate</a></li>
+<li class="leaf"><a href="/node/952">Licensing</a></li>
+<li class="leaf"><a href="/node/812">Purchase</a></li>
+<li class="last leaf"><a href="/node/813">Sales Contact</a></li>
+</ul></li>
+<li class="expanded"><a href="/node/814">Company</a><ul class="menu"><li class="first leaf"><a href="/node/815">Philosophy</a></li>
+<li class="last leaf"><a href="/node/816">Team</a></li>
+</ul></li>
+<li class="expanded"><a href="/node/817" title="">Support</a><ul class="menu"><li class="first leaf"><a href="/node/819">Getting Started</a></li>
+<li class="leaf"><a href="/documents/marketcetera-developer-network-2.2" title="">Documentation</a></li>
+<li class="leaf"><a href="/node/820" title="">Knowledge Base</a></li>
+<li class="leaf"><a href="/node/824">Forums</a></li>
+<li class="last leaf"><a href="/node/821">Download</a></li>
+</ul></li>
+<li class="last leaf"><a href="/node/822">Contact</a></li>
+</ul></div> <!-- end block content -->
+</div> <!-- end block -->
+  </div>
+      </div> <!-- end primary -->
+    <div id="rounded-menu-right"></div>
+</div> <!-- end menu -->
+<div style="clear:both"></div>
+
+
+ 
+<div style="clear:both"></div>
+<div id="wrapper">
+
+    <div id="content">
+			<a id="main-content"></a>
+						<h2 class="element-invisible">You are here</h2><div class="breadcrumb"><a href="/">Home</a> » <a href="/documents/marketcetera-developer-network-2.2">Marketcetera Developer Network 2.2</a></div>			      		      			        				<h1 class="title" id="page-title">
+    				        Setup Ruby With Quickfix                                        </h1>
+     				       		      		        			<div class="tabs">
+          				        			</div>
+      		      		      				      <div class="content-middle"><div id="node-906" class="node node-book clearfix" about="/documents/ruby-setup" typeof="sioc:Item foaf:Document">
+
+      
+      <div class="meta submitted">
+            published by <span rel="sioc:has_creator"><span class="username" xml:lang="" about="/user/1" typeof="sioc:UserAccount" property="foaf:name" datatype="">site administrator</span></span> on <span property="dc:date dc:created" content="2013-04-03T12:46:43+05:30" datatype="xsd:dateTime">Wed, 04/03/2013 - 12:46</span>    </div>
+  
+  <div class="content clearfix">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>In order for Rails to work with Quickfix, we need to build the Quickfix library since it's not distributed in binary form.</p>
+<p>here are the steps</p>
+<ol><li><a href="http://quickfixengine.org/download.html" rel="nofollow">download the <strong>Unix</strong> version</a> of the quickfix source</li>
+<li>You can find the full <a href="http://quickfixengine.org/quickfix/doc/html/building.html" rel="nofollow">instructions</a> or follow the ones below</li>
+<li>unzip/untar and run the following command to configure it to run with Ruby and be installed in /usr/local<br /><div class="preformatted panel" style="border-width: 1px;">
+<div class="preformattedContent panelContent">
+<pre>%&gt; ./configure.sh --with-ruby --prefix=/usr/local
+</pre></div>
+</div>
+</li>
+<li>Run <em>make install</em> (you may have to do <em>sudo make install</em>)</li>
+<li>This should place a set of quickfix directories and files:
+<ol><li>/usr/local/include/quickfix</li>
+<li>/usr/local/lib/<strong>quickfix</strong> (some files)</li>
+<li>/usr/local/share/quickfix</li>
+</ol></li>
+<li>You then need to set the <strong>LD_LIBRARY_PATH</strong> to point to the new location of ruby/quickfix libs:<br /><div class="preformatted panel" style="border-width: 1px;">
+<div class="preformattedContent panelContent">
+<pre>%&gt; export LD_LIBRARY_PATH=/usr/local/lib
+</pre></div>
+</div>
+</li>
+<li>You should be able to execute this sample ruby script:<br /><div class="code panel" style="border-width: 1px;">
+<div class="codeContent panelContent">
+<pre class="code-java">require 'quickfix_ruby'
+
+class Foo
+
+   def initialize
+     puts Quickfix::Message.<span class="code-keyword">new</span>().toString()
+   end
+end
+
+x= Foo.<span class="code-keyword">new</span></pre></div>
+</div>
+</li>
+<li>Rails should be able to see this now too</li>
+</ol></div></div></div>  <div id="book-navigation-894" class="book-navigation">
+    
+        <div class="page-links clearfix">
+              <a href="/documents/seda-developer" class="page-previous" title="Go to previous page">‹ SEDA Developer Notes</a>
+                    <a href="/documents/marketcetera-developer-network-2.2" class="page-up" title="Go to parent page">up</a>
+                </div>
+    
+  </div>
+  </div>
+
+  
+  
+</div>
+</div>
+						
+</div> <!-- end content -->
+
+    <div style="clear:both"></div>
+</div> <!-- end wrapper -->
+
+
+
+
+     <div style="clear:both"></div><!-- Do not touch -->
+    <div id="bottom-wrapper" class="in2">
+                                        <div class="column C">
+              <div class="region region-bottom-3">
+    <div id="block-block-2" class="block block-block">
+
+
+<div class="content">
+  <p><img style="margin-right: 7px; border-style: none; vertical-align: middle; height: 40px; width: 41px;" src="http://www.marketcetera.org/sites/all/themes/danland/images/email.png" alt="" /><a style="color: #4479a8; font-size: 14px; font-weight: bold;" href="http://www.marketcetera.org/node/813">CONTACT ME</a></p>
+</div> <!-- end block content -->
+</div> <!-- end block -->
+  </div>
+          </div>
+                              <div class="column D">
+              <div class="region region-bottom-4">
+    <div id="block-block-10" class="block block-block">
+
+
+<div class="content">
+  <p><img style="margin-right: 7px; border-style: none; vertical-align: middle;" src="http://www.marketcetera.org/sites/all/themes/danland/images/downloadbtn.png" alt="" /><a style="color: #4479a8; font-size: 14px; font-weight: bold;" href="http://www.marketcetera.org/node/821">DOWNLOAD</a></p>
+</div> <!-- end block content -->
+</div> <!-- end block -->
+  </div>
+          </div>
+                <div style="clear:both"></div>
+    </div><!-- end bottom -->
+    
+<div style="clear:both"></div>
+<div id="footer-wrapper">
+</div> <!-- end footer wrapper -->
+
+<div style="clear:both"></div>
+<div id="notice"><p>Copyright © 2009 Marketcetera, Inc. All rights reserved.</div>
+</div>
+  </body>
+</html>
