@@ -1,7 +1,7 @@
-require 'lib/quickfixj-all-1.5.3'
-require 'lib/slf4j-api-1.7.7.jar'
-require 'lib/slf4j-jdk14-1.7.7.jar'
-require 'lib/mina-core-1.1.0.jar'
+require_relative '../java_lib/quickfixj-all-1.5.3'
+require_relative '../java_lib/slf4j-api-1.7.7.jar'
+require_relative '../java_lib/slf4j-jdk14-1.7.7.jar'
+require_relative '../java_lib/mina-core-1.1.0.jar'
 
 java_import 'quickfix.SessionSettings'
 java_import 'quickfix.MemoryStoreFactory'
