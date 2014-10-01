@@ -1,6 +1,13 @@
-doctype html
-html
-  head
-    title My Slim Templates App
-  body
-    p Testing
+h2 Currencies
+table id="currency_table" class="table table-striped table-bordered table-hover"
+  thead
+    tr
+      td Currency
+      td Bid
+      td Offer
+  tbody
+    - for currency, bid_offer in prices do
+      tr
+        td = currency
+        td = bid_offer[0]
+        td = bid_offer[1]

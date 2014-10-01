@@ -1,5 +1,6 @@
 require 'bundler/setup'
 Bundler.require(:default)
+# require 'sinatra/reloader'
 
 require_relative 'queue_processor'
 
@@ -10,15 +11,15 @@ prices = ConcurrentHashMap.new
 t = Thread.new do
       counter = 0
       loop do
-        prices['GBP/ZAR'] = ["BID: #{counter}", "OFFER: #{counter}"]
+        prices['GBP/ZAR'] = [counter, counter + 1]
         counter += 1
         sleep(1)
       end
     end
 
 
-# require 'sinatra/reloader'
-
 get "/" do
-  erb :index, :locals => {:prices => prices}
+  slim :index, :locals => {:prices => prices}
 end
+
+use Rack::Deflater
