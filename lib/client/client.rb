@@ -1,25 +1,17 @@
 require 'bundler/setup'
 Bundler.require(:default)
-# require 'sinatra/reloader'
+require 'sinatra/reloader'
 
-require_relative 'queue_processor'
+require_relative '../common/imports'
+require_relative 'price_store'
 
 java_import 'java.util.concurrent.ConcurrentHashMap'
 
-prices = ConcurrentHashMap.new
-
-t = Thread.new do
-      counter = 0
-      loop do
-        prices['GBP/ZAR'] = [counter, counter + 1]
-        counter += 1
-        sleep(1)
-      end
-    end
-
+price_store = PriceStore.new
+price_store.start
 
 get "/" do
-  slim :index, :locals => {:prices => prices}
+  slim :index, :locals => {:prices => price_store.prices}
 end
 
 use Rack::Deflater

@@ -6,3 +6,4 @@ gem 'sinatra-contrib', '~> 1.4.2'
 gem "march_hare", "~> 2.5.1"
 gem 'slim', '~> 2.0.3'
 gem 'puma', '~> 2.9.1'
+gem 'pry', '~> 0.10.1'
