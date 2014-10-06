@@ -24,6 +24,8 @@ class QuickfixApplication < MessageCracker
   rescue InterruptException => e
     puts "\n" if e.is_a?(UserInterruptException)
     puts "#{e} Ending..."
+  rescue Exception => e 
+    puts "#{e}: #{e.backtrace.join("\n")}"
   ensure
     connector.stop(true) if connector
     exit

@@ -29,6 +29,7 @@ class Gateway < QuickfixApplication
   end
 end
 
+puts "PROCESS: #{Process.pid}"
 gateway = Gateway.new
 gateway.queue_processor = QueueProcessor.new
 gateway.start

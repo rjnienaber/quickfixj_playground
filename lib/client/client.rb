@@ -16,3 +16,4 @@ get "/" do
 end
 
 use Rack::Deflater
+puts "PROCESS: #{Process.pid}"

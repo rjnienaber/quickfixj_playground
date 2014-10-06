@@ -24,5 +24,6 @@ class Simulator < QuickfixApplication
   end
 end
 
+puts "PROCESS: #{Process.pid}"
 simulator = Simulator.new
 simulator.start
