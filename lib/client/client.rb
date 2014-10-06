@@ -1,17 +1,18 @@
 require 'bundler/setup'
 Bundler.require(:default)
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 
 require_relative '../common/imports'
 require_relative 'price_store'
 
 java_import 'java.util.concurrent.ConcurrentHashMap'
+prices = ConcurrentHashMap.new
 
-price_store = PriceStore.new
-price_store.start
+PriceStore.new(prices).start
+PriceStore.new(prices).start
 
 get "/" do
-  slim :index, :locals => {:prices => price_store.prices}
+  slim :index, :locals => {:prices => prices}
 end
 
 use Rack::Deflater

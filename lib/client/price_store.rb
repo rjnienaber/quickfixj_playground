@@ -1,15 +1,15 @@
 class PriceStore
   attr_reader :connection, :channel, :queue, :prices, :thread, :data_dictionary, :message_factory
 
-  def initialize
+  def initialize(prices)
     @connection = MarchHare.connect(:user => "admin", :password => "Rabbit123")
     @channel = connection.create_channel
-    @queue  = channel.queue("gateway.incoming_fix", :auto_delete => true)
+    @queue  = channel.queue("gateway.incoming_fix")
 
     @data_dictionary = DefaultDataDictionaryProvider.new.getApplicationDataDictionary(ApplVerID.new(ApplVerID::FIX43))
     @message_factory = DefaultMessageFactory.new
 
-    @prices = ConcurrentHashMap.new
+    @prices = prices
   end
 
   def start
@@ -42,5 +42,7 @@ class PriceStore
       prices.putIfAbsent(symbol, [])
       prices[symbol][price_index] = price
     end
+  rescue Exception => e
+    puts "#{e}: #{e.backtrace.join("\n")}"
   end
 end

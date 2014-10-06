@@ -15,11 +15,28 @@ class SimulatorThread
 
   def stop
     @ending = true
+    thread.join
   end
 
   private
   def send_market_update(session_id)
+    loop do
+      @bid = 17.79211 if (@bid || 0) < 16
+      @offer = 17.80661 if (@offer || 0) < 16
+
+      message = MessageBuilder.market_data_incremental(create_options(session_id))
+      Session.send_to_target(message, session_id)
+      break if ending
+    end
+  rescue Exception => e
+    puts "#{e}: #{e.backtrace.join("\n")}"
+  end
+
+  def create_options(session_id)
     now = Time.now
+    @bid = @bid * ((Random.new.rand * 10).to_i % 2 == 0 ? 0.99991 : 1.00001)
+    @offer = @offer * ((Random.new.rand * 10).to_i % 2 == 0 ? 0.99991 : 1.00001)
+
     options = {
       session_id: session_id,
       request_id: "20140504-BVPZXH",
@@ -27,7 +44,7 @@ class SimulatorThread
         {
           action: :change,
           entry: :bid,
-          price: 17.79211,
+          price: @bid,
           volume: 10000000,
           symbol: 'GBP/ZAR',
           entry_datetime: now
@@ -35,22 +52,12 @@ class SimulatorThread
         {
           action: :change,
           entry: :offer,
-          price: 17.80661,
+          price: @offer,
           volume: 10000000,
           symbol: 'GBP/ZAR',
           entry_datetime: now
         }
       ]
     }
-
-    message = MessageBuilder.market_data_incremental(options)
-    loop do
-      Session.send_to_target(message, session_id)
-      sleep(1)
-      break if ending
-    end
-  rescue Exception => e
-    puts "#{e}: #{e.backtrace.join("\n")}"
   end
-
 end

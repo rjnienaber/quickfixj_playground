@@ -4,7 +4,7 @@ class QueueProcessor
   def initialize
     @connection = MarchHare.connect(:user => "admin", :password => "Rabbit123")
     @channel = connection.create_channel
-    @queue  = channel.queue("gateway.incoming_fix", :auto_delete => true)
+    @queue  = channel.queue("gateway.incoming_fix")
   end
 
   def publish(fix_message)
