@@ -19,8 +19,8 @@ class Simulator < QuickfixApplication
   end
 
   def process
-    puts "Simulator started" 
-    sleep  
+    puts "Simulator started"
+    sleep
   end
 end
 

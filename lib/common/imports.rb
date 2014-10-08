@@ -1,3 +1,5 @@
+java_import 'java.util.concurrent.atomic.AtomicInteger'
+
 require_relative '../../java_lib/quickfixj-all-1.5.3'
 require_relative '../../java_lib/slf4j-api-1.7.7.jar'
 require_relative '../../java_lib/slf4j-jdk14-1.7.7.jar'
@@ -39,3 +41,5 @@ java_import 'quickfix.DataDictionary'
 java_import 'quickfix.DefaultMessageFactory'
 java_import 'quickfix.DefaultDataDictionaryProvider'
 java_import 'quickfix.MessageUtils'
+java_import 'quickfix.MessageStoreFactory'
+java_import 'quickfix.MessageStore'

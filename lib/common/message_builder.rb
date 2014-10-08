@@ -1,5 +1,5 @@
 class MessageBuilder
-  def self.market_data_incremental(options = {})
+  def self.market_data_incremental(options)
     message = MarketDataIncrementalRefresh.new 
 
     set_participant_ids(message, options[:session_id]) if options[:session_id]

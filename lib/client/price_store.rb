@@ -1,7 +1,7 @@
 class PriceStore
-  attr_reader :connection, :channel, :queue, :prices, :thread, :data_dictionary, :message_factory
+  attr_reader :connection, :channel, :queue, :prices, :thread, :data_dictionary, :message_factory, :counter
 
-  def initialize(prices)
+  def initialize(prices, counter)
     @connection = MarchHare.connect(:user => "admin", :password => "Rabbit123")
     @channel = connection.create_channel
     @queue  = channel.queue("gateway.incoming_fix")
@@ -9,6 +9,7 @@ class PriceStore
     @data_dictionary = DefaultDataDictionaryProvider.new.getApplicationDataDictionary(ApplVerID.new(ApplVerID::FIX43))
     @message_factory = DefaultMessageFactory.new
 
+    @counter = counter
     @prices = prices
   end
 
@@ -22,6 +23,7 @@ class PriceStore
     queue.subscribe(:block => true) do |metadata, payload|
       message = MessageUtils.parse(message_factory, data_dictionary, payload)
       update_prices(message)
+      counter.increment
     end
   rescue Interrupt => _
     connection.close

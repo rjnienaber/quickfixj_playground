@@ -5,10 +5,16 @@ require_relative '../common/quickfix_application'
 require_relative 'queue_processor'
 
 class Gateway < QuickfixApplication
-  attr_accessor :queue_processor
+  attr_accessor :queue_processor, :counter
 
-  def fromApp(message, session_id) 
-    queue_processor.publish(message.to_s)
+  def initialize
+    super
+    @counter = MessageCounter.new
+  end
+
+  def fromApp(message, session_id)
+    queue_processor.publish(message)
+    counter.increment
   rescue Exception => e
     puts "#{e}: #{e.backtrace.join("\n")}"
   end
@@ -32,4 +38,15 @@ end
 puts "PROCESS: #{Process.pid}"
 gateway = Gateway.new
 gateway.queue_processor = QueueProcessor.new
+
+Thread.new do
+  loop do
+    puts "QUEUE SIZE: #{gateway.connector.queue_size}" if gateway.connector
+    sleep(1)
+  end
+end
+
 gateway.start
+
+
+    

@@ -3,13 +3,15 @@ Bundler.require(:default)
 # require 'sinatra/reloader'
 
 require_relative '../common/imports'
+require_relative '../common/message_counter'
 require_relative 'price_store'
 
 java_import 'java.util.concurrent.ConcurrentHashMap'
 prices = ConcurrentHashMap.new
 
-PriceStore.new(prices).start
-PriceStore.new(prices).start
+counter = MessageCounter.new
+PriceStore.new(prices, counter).start
+PriceStore.new(prices, counter).start
 
 get "/" do
   slim :index, :locals => {:prices => prices}

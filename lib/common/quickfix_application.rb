@@ -1,6 +1,8 @@
 require_relative 'imports'
 require_relative 'exceptions'
 require_relative 'message_builder'
+require_relative 'message_counter'
+require_relative 'dummy_message_store'
 
 class QuickfixApplication < MessageCracker
   include Java::Quickfix::Application
@@ -10,7 +12,8 @@ class QuickfixApplication < MessageCracker
   def initialize
     @settings = SessionSettings.new('./settings.ini')
     @logger = ScreenLogFactory.new(settings)
-    @store_factory = MemoryStoreFactory.new
+    # @store_factory = MemoryStoreFactory.new
+    @store_factory = DummyMessageStoreFactory.new
     @message_factory = DefaultMessageFactory.new
   end
 
